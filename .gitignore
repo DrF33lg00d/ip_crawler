@@ -1,1 +1,4 @@
 /venv
+/settings.py
+/ip_log.json
+/__pycache__

@@ -1,0 +1,26 @@
+__host_google = 'smtp.gmail.com'
+__port_google = 587
+__host_mailru = 'smtp.mail.ru'
+__port_mailru = 25 # А НЕ 465!!! MAIL.RU, ЧТО ЗА ДЕЛА?!
+__host_yandex = 'smtp.yandex.ru'
+__port_yandex = 465
+
+HOST = __host_google
+PORT = __port_google
+
+
+send_from = 'kek1@gmail.com'
+send_to = 'kek2@gmail.com'
+subject_mail = 'Your IP address'
+
+user = 'kek1@gmail.com'
+password = 'k3kk3kk3k'
+
+
+"""
+Для отправки писем можно использовать любой имеющийся у пользователя почтовый ящик. 
+Настройки каждого почтового провайдера открыто предоставляются каждым из них:
+Gmail — https://support.google.com/mail/answer/7126229?hl=ru
+Mail.ru — https://help.mail.ru/mail-help/mailer/popsmtp
+Yandex — https://yandex.ru/support/mail-new/mail-clients.html
+"""
