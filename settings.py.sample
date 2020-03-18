@@ -1,24 +1,34 @@
-__host_google = 'smtp.gmail.com'
-__port_google = 587
-__host_mailru = 'smtp.mail.ru'
-__port_mailru = 25 # А НЕ 465!!! MAIL.RU, ЧТО ЗА ДЕЛА?!
-__host_yandex = 'smtp.yandex.ru'
-__port_yandex = 465
+GOOGLE = {
+        'host': 'smtp.gmail.com',
+        'port': '587'
+}
+MAILRU = {
+        'host': 'smtp.mail.ru',
+        'port': '25' # А НЕ 465!!! MAIL.RU, ЧТО ЗА ДЕЛА?!
+}
+YANDEX = {
+        'host': 'smtp.yandex.ru',
+        'port': '465'
+}
 
-HOST = __host_google
-PORT = __port_google
-
+HOST = GOOGLE['host']
+PORT = GOOGLE['port']
 
 send_from = 'kek1@gmail.com'
-send_to = 'kek2@gmail.com'
+send_to = ['kek2@gmail.com', 'kek3@gmail.com']
 subject_mail = 'Your IP address'
 
 user = 'kek1@gmail.com'
 password = 'k3kk3kk3k'
 
+text_of_mail = """Hello!
+I've sent this mail because you're need my IP.
+My IP address is %myip%
+Good Luck!
+"""
 
 """
-Для отправки писем можно использовать любой имеющийся у пользователя почтовый ящик. 
+Для отправки писем можно использовать любой имеющийся у пользователя почтовый ящик.
 Настройки каждого почтового провайдера открыто предоставляются каждым из них:
 Gmail — https://support.google.com/mail/answer/7126229?hl=ru
 Mail.ru — https://help.mail.ru/mail-help/mailer/popsmtp
