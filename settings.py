@@ -1,14 +1,14 @@
 GOOGLE = {
-        'host': 'smtp.gmail.com',
-        'port': '587'
+    'host': 'smtp.gmail.com',
+    'port': '587'
 }
 MAILRU = {
-        'host': 'smtp.mail.ru',
-        'port': '25' # А НЕ 465!!! MAIL.RU, ЧТО ЗА ДЕЛА?!
+    'host': 'smtp.mail.ru',
+    'port': '25'  # А НЕ 465!!! MAIL.RU, ЧТО ЗА ДЕЛА?!
 }
 YANDEX = {
-        'host': 'smtp.yandex.ru',
-        'port': '465'
+    'host': 'smtp.yandex.ru',
+    'port': '465'
 }
 
 HOST = GOOGLE['host']
@@ -34,3 +34,8 @@ Gmail — https://support.google.com/mail/answer/7126229?hl=ru
 Mail.ru — https://help.mail.ru/mail-help/mailer/popsmtp
 Yandex — https://yandex.ru/support/mail-new/mail-clients.html
 """
+
+try:
+    from local_settings import *
+except:
+    pass

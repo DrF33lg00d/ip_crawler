@@ -1,0 +1,11 @@
+import settings
+
+HOST = settings.GOOGLE['host']
+PORT = settings.GOOGLE['port']
+
+send_from = 'kek1@gmail.com'
+send_to = ['kek2@gmail.com', 'kek3@gmail.com']
+subject_mail = 'Your IP address'
+
+user = 'kek1@gmail.com'
+password = 'k3kk3kk3k'

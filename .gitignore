@@ -1,5 +1,5 @@
 /venv
 /.idea
-/settings.py
+/local_settings.py
 /ip_log.json
 /__pycache__
