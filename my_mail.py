@@ -1,10 +1,11 @@
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import settings
-import re
 
-class Mail():
+import settings
+
+
+class Mail:
     def __init__(self, subject, from_addr, to_addr, user='', password=''):
         self.subject = subject
         self.from_addr = from_addr
