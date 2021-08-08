@@ -1,33 +1,39 @@
 import requests
-import lxml.html
 import json
 import settings
 from my_mail import Mail
 
 
-
 def main():
-    print('Start crawl...')
-    URL = 'https://pr-cy.ru/browser-details/'
-    r = requests.get(URL)
-    data = r.text
-    html = lxml.html.fromstring(data)
-    ip_address = html.xpath('//table[@class="table"]//div[@class="ip"]/text()')
-    text_mail = settings.text_of_mail.replace('%myip%', ip_address[0])
-    print('End crawl. Done!')
+    url_ip = 'https://api.myip.com/'
+    req = requests.get(url_ip)
+    if req.status_code != 200:
+        raise Exception(f'Error, status_code: {req.status_code}')
+    ip = req.json().get('ip')
+    if ip is None:
+        raise Exception('IP not found.')
 
-    with open('ip_log.json', 'w') as f:
-        json.dump(ip_address[0], f, indent=4)
+    need_send_mail = True
+    try:
+        with open('ip_log.json', 'r') as reader:
+            ip_old = json.load(reader).get('ip')
+            need_send_mail = ip_old is not None and ip_old != ip
+    except Exception as e:
+        print('No file found, create new one.')
 
-    print('Creating mail...')
-    message = Mail(
-        subject=settings.subject_mail,
-        from_addr=settings.send_from,
-        to_addr=settings.send_to,
-        user=settings.user,
-        password=settings.password)
-    message.send(text_mail)
-    print('Message sent!')
+    if need_send_mail:
+        with open('ip_log.json', 'w') as f:
+            json.dump({'ip': ip}, f, indent=4)
+        text_mail = settings.text_of_mail.replace('%myip%', ip)
+        message = Mail(
+            subject=settings.subject_mail,
+            from_addr=settings.send_from,
+            to_addr=settings.send_to,
+            user=settings.user,
+            password=settings.password)
+        message.send(text_mail)
+    else:
+        print('IP not changed.')
 
 
 if '__main__' == __name__:
