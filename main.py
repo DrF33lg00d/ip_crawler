@@ -42,6 +42,7 @@ def main():
             user=settings.user,
             password=settings.password)
         message.send(text_mail)
+        print('Message sent.')
     else:
         print('IP not changed.')
 
